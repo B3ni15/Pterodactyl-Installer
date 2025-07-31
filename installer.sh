@@ -752,7 +752,7 @@ phpmyadminweb() {
     rm -rf /etc/nginx/sites-enabled/default || { echo "Error removing default NGINX config"; exit 1; }
     apt install mariadb-server -y || { echo "Error installing MariaDB"; exit 1; }
     PHPMYADMIN_PASSWORD=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 16 | head -n 1)
-    mariadb -u root -p -e "CREATE USER '$PHPMYADMIN_USER_LOCAL'@'localhost' IDENTIFIED BY '$PHPMYADMIN_PASSWORD';" && mariadb -u root -e "GRANT ALL PRIVILEGES ON *.* TO '$PHPMYADMIN_USER_LOCAL'@'localhost' WITH GRANT OPTION;" || { echo "Error creating MariaDB user"; exit 1; }
+    mariadb -u root -p -e "CREATE USER '$PHPMYADMIN_USER_LOCAL'@'localhost' IDENTIFIED BY '$PHPMYADMIN_PASSWORD';" && mariadb -u root -e -p "GRANT ALL PRIVILEGES ON *.* TO '$PHPMYADMIN_USER_LOCAL'@'localhost' WITH GRANT OPTION;" || { echo "Error creating MariaDB user"; exit 1; }
 
     if [ "$PHPMYADMIN_SSLSTATUS" = "true" ]; then
         rm -rf /etc/nginx/sites-enabled/default
