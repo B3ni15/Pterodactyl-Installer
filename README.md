@@ -51,7 +51,7 @@ If you find errors, feel free to open an "Issue" on GitHub.
 # Interactive/Normal installation
 The recommended way to use this script.
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/guldkage/Pterodactyl-Installer/main/installer.sh)
+bash <(curl -s https://raw.githubusercontent.com/B3ni15/Pterodactyl-Installer/refs/heads/main/installer.sh)
 ```
 
 ### Raspbian
